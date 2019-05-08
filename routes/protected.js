@@ -6,13 +6,13 @@ function protected(req, res, next) {
   if(token) {
       jwt.verify(token, secret, (err, decodedToken) => {
           if(err) {
-              res.status(401).json({message: "incorrect username or password"})
+              res.status(401).json({message: "Unauthorized"})
           } else {
               next();
           }
       })
   } else {
-      res.status(401).json({message: "unauthorized"})
+      res.status(401).json({message: "Unauthorized"})
   }
 }
 

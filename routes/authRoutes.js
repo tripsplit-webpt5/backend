@@ -29,18 +29,20 @@ router.post("/register", (req, res) => {
     .insert(creds)
     .then(ids => {
       const id = ids[0];
-
+      console.log("after insert", "id:", id)
       db("users").where({id: id}).first().then(user => {
+        console.log("hey")
           const token = generateToken(user);
-          res.status(201).json({id: user.id, token});
+          console.log("hi")
+          res.status(200).json({id: user.id, token});
       }).catch(err => res.status(500).send(err))
       
     })
     .catch(err => {
-      if (err.detail === "Key (id)=(1) already exists.") {
-        res.status(400).send("that username is already taken")
+      if (err.detail.includes("already exists.")) {
+        res.status(400).json({message:"that username is already taken"})
       } else {
-      res.status(500).send(err)
+      res.status(500).json({error: err})
     };
 });
 })
@@ -58,7 +60,7 @@ router.post("/login", (req, res) => {
         const token = generateToken(user);
         res.status(200).json({id: user.id, token});
       } else {
-        res.status(401).json({ message: "incorrect credentials" });
+        res.status(400).json({ message: "incorrect credentials" });
       }
     })
     .catch(err => res.status(500).json({error: err}));
