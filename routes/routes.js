@@ -11,6 +11,6 @@ router.use(cors());
 
 router.use("/auth", authRoutes);
 router.use("/user", tripRoutes);
-// router.use("/expense", expRoutes);
+router.use("/trips", expRoutes);
 
 module.exports = router;
