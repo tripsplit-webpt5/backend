@@ -17,6 +17,7 @@ router.get("/trips/:tripid", protected, (req, res) => {
   db("trips")
     .select()
     .where({id: req.params.tripid})
+    .first()
     .then(trips => {
       res.status(200).json(trips);
     })

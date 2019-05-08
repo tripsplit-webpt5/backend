@@ -30,11 +30,8 @@ router.post("/register", (req, res) => {
     .returning("id")
     .then(ids => {
       const id = ids[0];
-      console.log("after insert", "id:", id)
       db("users").where({id: id}).first().then(user => {
-        console.log("hey")
           const token = generateToken(user);
-          console.log("hi")
           res.status(200).json({id: user.id, token});
       }).catch(err => res.status(500).send(err))
       
