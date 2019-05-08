@@ -10,7 +10,7 @@ router.use(express.json());
 router.use(cors());
 
 router.use("/auth", authRoutes);
-// router.use("/trip", tripRoutes);
+router.use("/user", tripRoutes);
 // router.use("/expense", expRoutes);
 
 module.exports = router;

@@ -1,4 +1,4 @@
-const express = require("express");
+const express = require('express');
 const cors = require('cors')
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs')
@@ -30,14 +30,20 @@ router.post("/register", (req, res) => {
     .then(ids => {
       const id = ids[0];
 
-      db('users').where({id}).first().then(user => {
+      db("users").where({id: id}).first().then(user => {
           const token = generateToken(user);
           res.status(201).json({id: user.id, token});
       }).catch(err => res.status(500).send(err))
       
     })
-    .catch(err => res.status(500).send(err));
+    .catch(err => {
+      if (err.detail === "Key (id)=(1) already exists.") {
+        res.status(400).send("that username is already taken")
+      } else {
+      res.status(500).send(err)
+    };
 });
+})
 
 //looks for username in the database 
 //if found hashes password and checks against password in database
@@ -52,7 +58,7 @@ router.post("/login", (req, res) => {
         const token = generateToken(user);
         res.status(200).json({id: user.id, token});
       } else {
-        res.status(401).json({ message: "incorrect password" });
+        res.status(401).json({ message: "incorrect credentials" });
       }
     })
     .catch(err => res.status(500).json({error: err}));
