@@ -1,0 +1,8 @@
+{
+  "name": "tripsplit-backend",
+  "version": "1.0.0",
+  "main": "server.js",
+  "repository": "https://github.com/tripsplit-webpt5/backend.git",
+  "author": "\"ckopecky\" <kopecky12112@gmail.com>",
+  "license": "MIT"
+}
