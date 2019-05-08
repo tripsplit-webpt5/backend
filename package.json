@@ -4,5 +4,15 @@
   "main": "server.js",
   "repository": "https://github.com/tripsplit-webpt5/backend.git",
   "author": "\"ckopecky\" <kopecky12112@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.0"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  }
 }
