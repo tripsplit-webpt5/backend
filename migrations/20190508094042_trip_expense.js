@@ -18,7 +18,7 @@ exports.up = function(knex, Promise) {
       .unsigned()
       .defaultTo(0)
     expense
-      .integer("price")
+      .decimal("price",18,2)
       .unsigned()
       .notNullable()
     expense
