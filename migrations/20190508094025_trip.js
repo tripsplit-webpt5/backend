@@ -11,7 +11,8 @@ exports.up = function(knex, Promise) {
       .unsigned()
       .notNullable()
       .references("id")
-      .inTable("users");
+      .inTable("users")
+      .onDelete('CASCADE');
     trips
       .integer("number_travelers")
       .unsigned()
