@@ -30,6 +30,6 @@
 | ------ | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | POST   | /trips/expense     | Adds an expense to the trip. Expects a body with `title`, `trip_id`, `number_paid`, `price`, and `names`. `title`, `trip_id`, and `price` must be included, `names` will default to null if no information is provided, `number_paid` defaults to 0.      |
 | GET    | /trips/expense/all/tripID     | Returns an array of all expenses for the trip                                                                                                                      |
-| GET   | /trips/expense/tripID     | Returns a single object (expense) for the trip           |
-| PUT    | /trips/expense/tripID | Updates information for an expense, can include any of the following values: `title`, `number_paid`, `price` and/or `names`|
-| DELETE   | /trips/expense/tripID     | Returns a `message` detailing if the delete was successful or not           |
+| GET   | /trips/expense/expenseID     | Returns a single object (expense) for the trip           |
+| PUT    | /trips/expense/expenseID | Updates information for an expense, can include any of the following values: `title`, `number_paid`, `price` and/or `names`|
+| DELETE   | /trips/expense/expenseID     | Returns a `message` detailing if the delete was successful or not           |
